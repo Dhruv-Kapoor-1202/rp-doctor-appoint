@@ -1,4 +1,4 @@
-import ModeToggle from "@/components/mode-toggle";
+// import ModeToggle from "@/components/mode-toggle";
 import { Link } from "react-router-dom";
 
 const SignupPage = () => {
@@ -69,7 +69,7 @@ const SignupPage = () => {
           </Link>
         </p>
       </div>
-      <ModeToggle />
+      {/* <ModeToggle /> */}
     </div>
   );
 };

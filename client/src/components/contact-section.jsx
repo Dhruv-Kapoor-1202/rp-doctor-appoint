@@ -1,8 +1,14 @@
+import {
+  DiscordLogoIcon,
+  LinkedInLogoIcon,
+  TwitterLogoIcon,
+} from "@radix-ui/react-icons";
+
 const ContactSection = () => {
   return (
-    <section className="container grid grid-cols-1 gap-4 p-2 py-8 sm:py-12 md:grid-cols-2">
+    <section className="container grid grid-cols-1 gap-4 py-8 sm:py-12 md:grid-cols-2">
       <div className="flex flex-col ">
-        <h2 className="pb-4 text-lg font-semibold text-center sm:pb-8 md:pb-12 sm:text-left sm:text-xl md:text-2xl text-slate-900">
+        <h2 className="pb-4 text-lg font-semibold text-center sm:pb-8 md:pb-12 sm:text-left sm:text-xl md:text-2xl text-foreground">
           Get in Touch
         </h2>
         <p className="italic tracking-normal text-base/7 text-balance">
@@ -23,9 +29,12 @@ const ContactSection = () => {
             (123) 456-7890
           </span>
         </p>
-        <p className="italic font-medium tracking-normal text-base/7 text-balance">
-          Follow Us: [Facebook] [Twitter] [LinkedIn]
-        </p>
+        <div className="flex items-center gap-2 italic font-medium tracking-normal text-base/7 text-balance">
+          <p>Follow Us: </p>
+          <LinkedInLogoIcon className="size-5 hover:scale-[1.1] duration-200 cursor-pointer" />
+          <TwitterLogoIcon className="size-5 hover:scale-[1.1] duration-200 cursor-pointer" />
+          <DiscordLogoIcon className="size-5 hover:scale-[1.1] duration-200 cursor-pointer" />
+        </div>
       </div>
 
       <form className="grid grid-cols-1 gap-4 sm:gap-6">
@@ -40,7 +49,7 @@ const ContactSection = () => {
             type="text"
             id="name"
             placeholder="Name"
-            className="block w-full rounded-md border-0 px-3.5 py-2 text-slate-950 shadow-sm ring-1 ring-inset ring-slate-800 bg-white placeholder:text-slate-600 focus:ring-1  focus:ring-offset-2 focus:ring-slate-800 sm:text-sm/6 mt-2"
+            className="block w-full rounded-md  px-3.5 py-2 text-slate-950  border border-border bg-card placeholder:text-muted-foreground  sm:text-sm/6 mt-2"
             autoComplete="name"
             required
           />
@@ -56,7 +65,7 @@ const ContactSection = () => {
             type="email"
             id="email"
             placeholder="Email"
-            className="block w-full rounded-md border-0 px-3.5 py-2 text-slate-950 shadow-sm ring-1 ring-inset ring-slate-800 bg-white placeholder:text-slate-600 focus:ring-1  focus:ring-offset-2 focus:ring-slate-800 sm:text-sm/6 mt-2"
+            className="block w-full rounded-md  px-3.5 py-2 text-slate-950  border border-border bg-card placeholder:text-muted-foreground  sm:text-sm/6 mt-2"
             autoComplete="email"
             required
           />
@@ -71,14 +80,14 @@ const ContactSection = () => {
           <textarea
             placeholder="Message"
             id="message"
-            className="block w-full rounded-md border-0 px-3.5 py-2 text-slate-950 shadow-sm ring-1 ring-inset ring-slate-800 bg-white placeholder:text-slate-600 focus:ring-1  focus:ring-offset-2 focus:ring-slate-800 sm:text-sm/6 mt-2 "
+            className="block w-full rounded-md  px-3.5 py-2 text-foreground  border border-border bg-card placeholder:text-muted-foreground  sm:text-sm/6 mt-2 "
             rows="4"
             required
           ></textarea>
         </div>
         <button
           type="submit"
-          className="block w-full rounded-md bg-slate-950 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-950/95 duration-200  hover:rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-700"
+          className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-primary-foreground  hover:bg-primary/80 duration-200  hover:rounded-xl   "
         >
           Send Message
         </button>
