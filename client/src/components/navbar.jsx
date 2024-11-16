@@ -1,5 +1,6 @@
 import ModeToggle from "@/components/mode-toggle";
 import { GridIcon } from "@radix-ui/react-icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -13,12 +14,18 @@ const Navbar = () => {
       {/* Buttons */}
       <div className="flex flex-wrap gap-2">
         <ModeToggle />
-        <button className="p-2 px-4 font-medium tracking-normal duration-300 rounded-lg cursor-pointer hover:rounded-xl text-sm/snug bg-secondary text-secondary-foreground hover:bg-secondary/80">
+        <Link
+          to="/login"
+          className="p-2 px-4 font-medium tracking-normal duration-300 rounded-lg cursor-pointer hover:rounded-xl text-sm/snug bg-secondary text-secondary-foreground hover:bg-secondary/80"
+        >
           Login
-        </button>
-        <button className="p-2 px-4 font-medium tracking-normal duration-300 rounded-lg cursor-pointer hover:rounded-xl text-sm/snug bg-primary text-primary-foreground hover:bg-primary/95">
+        </Link>
+        <Link
+          to="/signup"
+          className="p-2 px-4 font-medium tracking-normal duration-300 rounded-lg cursor-pointer hover:rounded-xl text-sm/snug bg-primary text-primary-foreground hover:bg-primary/95"
+        >
           Register
-        </button>
+        </Link>
       </div>
     </div>
   );

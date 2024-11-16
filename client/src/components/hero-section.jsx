@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -45,12 +46,12 @@ const HeroSection = () => {
       </div>
 
       <div className="grid w-full h-40 grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-2">
-        <a
-          href="#"
+        <Link
+          to="/signup"
           className="flex flex-col items-center justify-center w-full h-full col-span-1 font-normal duration-300 cursor-pointer text-primary-foreground sm:text-lg rounded-xl bg-primary hover:bg-primary/95 hover:rounded-3xl "
         >
           Get Started
-        </a>
+        </Link>
         <a
           href="#"
           className="flex flex-col items-center justify-center w-full h-full col-span-1 font-normal duration-300 border cursor-pointer border-border sm:text-lg rounded-xl hover:rounded-3xl text-secondary-foreground group "

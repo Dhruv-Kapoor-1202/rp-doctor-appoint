@@ -5,6 +5,8 @@ import Patient from "./pages/Patient";
 import Staff from "./pages/Staff";
 import Reports from "./pages/Reports";
 import Team from "./pages/Team";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/dashboard/reports" element={<Reports />} />
           <Route path="/dashboard/team" element={<Team />} />
         </Route>
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );
