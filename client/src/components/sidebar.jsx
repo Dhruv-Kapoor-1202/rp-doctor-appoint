@@ -14,7 +14,7 @@ const Sidebar = ({ children }) => {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className="fixed top-0 h-screen sm:sticky">
+    <aside className="fixed top-0 h-screen md:sticky">
       <nav className="flex flex-col h-full gap-4 border-r shadow-sm border-border bg-background md:gap-6 lg:gap-8">
         {/* logo */}
         <div className="flex items-center justify-start gap-2 p-4 pb-2">

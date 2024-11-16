@@ -49,7 +49,7 @@ const DashBoardLayout = () => {
           link="/dashboard/team"
         />
       </Sidebar>
-      <div className="w-full p-2 pl-20 sm:pl-2">
+      <div className="w-full p-2 pl-20 md:pl-2">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/patient" element={<Patient />} />
