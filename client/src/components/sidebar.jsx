@@ -2,10 +2,11 @@
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  DotsVerticalIcon,
+  // DotsVerticalIcon,
 } from "@radix-ui/react-icons";
 import { createContext, useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import ModeToggle from "./mode-toggle";
 
 const SidebarContext = createContext();
 
@@ -13,19 +14,19 @@ const Sidebar = ({ children }) => {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className="relative h-screen">
-      <nav className="flex flex-col h-full gap-4 bg-white border-r shadow-sm md:gap-6 lg:gap-8">
+    <aside className="fixed top-0 h-screen sm:sticky">
+      <nav className="flex flex-col h-full gap-4 border-r shadow-sm border-border bg-background md:gap-6 lg:gap-8">
         {/* logo */}
         <div className="flex items-center justify-start gap-2 p-4 pb-2">
           <img
             src="/hospital-logo.png"
-            className={`overflow-hidden transition-all w-10  ${
+            className={`overflow-hidden transition-all w-8 sm:w-10  ${
               expanded ? "" : "w-0"
             }`}
             alt="Logo"
           />
           <p
-            className={`text-xl font-semibold text-gray-700 ${
+            className={`text-xl font-semibold text-secondary-foreground ${
               expanded ? "" : "hidden"
             }`}
           >
@@ -33,10 +34,10 @@ const Sidebar = ({ children }) => {
           </p>
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className={`p-1.5 rounded-lg bg-gray-100 absolute hover:bg-gray-200 duration-200 ${
+            className={`p-1 rounded-lg bg-secondary text-secondary-foreground absolute hover:bg-secondary/70 duration-200 ${
               expanded
-                ? "right-0 rounded-e-none pr-1"
-                : "left-full rounded-s-none pl-1"
+                ? "right-0 rounded-e-none pr-0"
+                : "left-full rounded-s-none pl-0"
             }`}
           >
             {expanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -47,7 +48,7 @@ const Sidebar = ({ children }) => {
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
 
-        <div className="flex p-3 border-t">
+        <div className="flex items-center justify-center p-3 border-t border-border">
           <img
             src="https://avatars.githubusercontent.com/u/101688220?v=4"
             alt=""
@@ -61,9 +62,12 @@ const Sidebar = ({ children }) => {
           >
             <div className="leading-4">
               <h4 className="font-semibold">Dhruv Kapoor</h4>
-              <span className="text-xs text-gray-600">dk1202@gmail.com</span>
+              <span className="text-xs text-muted-foreground">
+                dk1202@gmail.com
+              </span>
             </div>
-            <DotsVerticalIcon size={20} />
+            {/* <DotsVerticalIcon size={20} /> */}
+            <ModeToggle />
           </div>
         </div>
       </nav>
@@ -77,11 +81,11 @@ export function SidebarItem({ icon, text, active, alert, link }) {
     <Link
       to={link}
       className={`
-      relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors capitalize group
+      relative flex items-center  py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors capitalize group
       ${
         active
-          ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-          : "hover:bg-indigo-50 text-gray-600"
+          ? "bg-gradient-to-tr from-primary to-primary/60 text-primary-foreground"
+          : "hover:bg-secondary duration-200 text-secondary-foreground"
       }
     `}
     >
@@ -95,7 +99,7 @@ export function SidebarItem({ icon, text, active, alert, link }) {
       </span>
       {alert && (
         <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
+          className={`absolute right-2 w-2 h-2 rounded bg-ring ${
             expanded ? "" : "top-2"
           }`}
         />
@@ -104,7 +108,7 @@ export function SidebarItem({ icon, text, active, alert, link }) {
       {!expanded && (
         <div
           className={`absolute left-full rounded-md px-2 py-1 ml-6
-        bg-indigo-100 text-indigo-800 text-sm
+        bg-primary text-primary-foreground text-sm
         invisible opacity-20 -translate-x-3 transition-all
         group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
         `}

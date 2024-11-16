@@ -16,46 +16,48 @@ import Team from "./Team";
 
 const DashBoardLayout = () => {
   return (
-    <main className="flex">
+    <main className="flex bg-background">
       <Sidebar>
         <SidebarItem
-          icon={<DashboardIcon className="size-6" />}
+          icon={<DashboardIcon className="size-4 sm:size-6" />}
           text="dashboard"
           active
           link="/dashboard"
         />
         <SidebarItem
-          icon={<PersonIcon className="size-6" />}
+          icon={<PersonIcon className="size-4 sm:size-6" />}
           text="patient"
           alert
           link="/dashboard/patient"
         />
         <SidebarItem
-          icon={<FileTextIcon className="size-6" />}
+          icon={<FileTextIcon className="size-4 sm:size-6" />}
           text="staff"
           alert
           link="/dashboard/staff"
         />
         <SidebarItem
-          icon={<ClipboardIcon className="size-6" />}
+          icon={<ClipboardIcon className="size-4 sm:size-6" />}
           text="reports"
           alert
           link="/dashboard/reports"
         />
         <SidebarItem
-          icon={<GlobeIcon className="size-6" />}
+          icon={<GlobeIcon className="size-4 sm:size-6" />}
           text="team"
           alert
           link="/dashboard/team"
         />
       </Sidebar>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/patient" element={<Patient />} />
-        <Route path="/staff" element={<Staff />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/team" element={<Team />} />
-      </Routes>
+      <div className="w-full p-2 pl-20 sm:pl-2">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/patient" element={<Patient />} />
+          <Route path="/staff" element={<Staff />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/team" element={<Team />} />
+        </Routes>
+      </div>
     </main>
   );
 };
