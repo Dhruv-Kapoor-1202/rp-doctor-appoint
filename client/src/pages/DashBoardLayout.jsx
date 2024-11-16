@@ -14,40 +14,62 @@ import Staff from "./Staff";
 import Reports from "./Reports";
 import Team from "./Team";
 
+const sidebarData = [
+  {
+    icon: <DashboardIcon className="size-4 sm:size-6" />,
+    text: "dashboard",
+    active: true,
+    alert: false,
+    link: "/dashboard",
+  },
+  {
+    icon: <PersonIcon className="size-4 sm:size-6" />,
+    text: "patient",
+    active: false,
+    alert: true,
+    link: "/dashboard/patient",
+  },
+  {
+    icon: <FileTextIcon className="size-4 sm:size-6" />,
+    text: "staff",
+    active: false,
+    alert: true,
+    link: "/dashboard/staff",
+  },
+  {
+    icon: <ClipboardIcon className="size-4 sm:size-6" />,
+    text: "reports",
+    active: false,
+    alert: true,
+    link: "/dashboard/reports",
+  },
+  {
+    icon: <GlobeIcon className="size-4 sm:size-6" />,
+    text: "team",
+    active: false,
+    alert: true,
+    link: "/dashboard/team",
+  },
+];
+
 const DashBoardLayout = () => {
+  // const isActive = true;
   return (
     <main className="flex bg-background">
       <Sidebar>
-        <SidebarItem
-          icon={<DashboardIcon className="size-4 sm:size-6" />}
-          text="dashboard"
-          active
-          link="/dashboard"
-        />
-        <SidebarItem
-          icon={<PersonIcon className="size-4 sm:size-6" />}
-          text="patient"
-          alert
-          link="/dashboard/patient"
-        />
-        <SidebarItem
-          icon={<FileTextIcon className="size-4 sm:size-6" />}
-          text="staff"
-          alert
-          link="/dashboard/staff"
-        />
-        <SidebarItem
-          icon={<ClipboardIcon className="size-4 sm:size-6" />}
-          text="reports"
-          alert
-          link="/dashboard/reports"
-        />
-        <SidebarItem
-          icon={<GlobeIcon className="size-4 sm:size-6" />}
-          text="team"
-          alert
-          link="/dashboard/team"
-        />
+        {sidebarData.map((item, index) => {
+          return (
+            <SidebarItem
+              icon={item.icon}
+              key={index}
+              text={item.text}
+              link={item.link}
+              // active={`${isActive ? "true" : "false"}`}
+              active={item.active}
+              alert={item.alert}
+            />
+          );
+        })}
       </Sidebar>
       <div className="w-full p-2 pl-20 md:pl-2">
         <Routes>
@@ -63,3 +85,34 @@ const DashBoardLayout = () => {
 };
 
 export default DashBoardLayout;
+
+// <SidebarItem
+// icon={<DashboardIcon className="size-4 sm:size-6" />}
+// text="dashboard"
+// active
+// link="/dashboard"
+// />
+// <SidebarItem
+// icon={<PersonIcon className="size-4 sm:size-6" />}
+// text="patient"
+// alert
+// link="/dashboard/patient"
+// />
+// <SidebarItem
+// icon={<FileTextIcon className="size-4 sm:size-6" />}
+// text="staff"
+// alert
+// link="/dashboard/staff"
+// />
+// <SidebarItem
+// icon={<ClipboardIcon className="size-4 sm:size-6" />}
+// text="reports"
+// alert
+// link="/dashboard/reports"
+// />
+// <SidebarItem
+// icon={<GlobeIcon className="size-4 sm:size-6" />}
+// text="team"
+// alert
+// link="/dashboard/team"
+// />
