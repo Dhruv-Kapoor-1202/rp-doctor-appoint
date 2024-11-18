@@ -1,7 +1,7 @@
-import OverviewSection from "@/components/overview-section";
-import PatientListSection from "@/components/patient-list-section";
-import RightSidebar from "@/components/right-sidebar";
-import SurgerySection from "@/components/surgery-section";
+import OverviewSection from "@/components/ui/overview-section";
+import PatientListSection from "@/components/ui/patient-list-section";
+import RightSidebar from "@/components/ui/right-sidebar";
+import SurgerySection from "@/components/ui/surgery-section";
 
 const Dashboard = () => {
   return (

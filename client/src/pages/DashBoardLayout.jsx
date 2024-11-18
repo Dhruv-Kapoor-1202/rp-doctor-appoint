@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Sidebar, { SidebarItem } from "@/components/sidebar";
+import Sidebar, { SidebarItem } from "@/components/ui/sidebar";
 import {
   ClipboardIcon,
   DashboardIcon,

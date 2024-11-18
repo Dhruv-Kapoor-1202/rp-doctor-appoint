@@ -1,4 +1,4 @@
-import ModeToggle from "@/components/mode-toggle";
+import ModeToggle from "@/components/ui/mode-toggle";
 import { GridIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
 

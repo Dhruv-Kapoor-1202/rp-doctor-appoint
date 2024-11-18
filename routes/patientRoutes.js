@@ -6,17 +6,17 @@ import {
 } from "../controllers/patientCtrl";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
-const router = express.Router();
+const patientRouter = express.Router();
 
 // routes
 
 // Login || POST
-router.post("/login", loginController);
+patientRouter.post("/login", loginController);
 
 // Register || POST
-router.post("/register", registerController);
+patientRouter.post("/register", registerController);
 
 // Auth || POST
-router.post("/getPatientData", authMiddleware, authController);
+patientRouter.post("/getPatientData", authMiddleware, authController);
 
-export default router;
+export default patientRouter;
