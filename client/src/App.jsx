@@ -7,10 +7,13 @@ import Reports from "./pages/Reports";
 import Team from "./pages/Team";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { loading } = useSelector((state) => state.alerts);
   return (
     <>
+      {loading ? <p>loading...</p> : <p>Stuff Happens</p>}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<DashBoardLayout />}>
