@@ -9,18 +9,17 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const token = localStorage.getItem("token");
 
   const getUser = async () => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/user/getPatientData",
-        {
-          token: localStorage.getItem("token"),
-        },
+        "http://localhost:8080/api/v1/user/getPatientData",
+        { token },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -29,27 +28,28 @@ const ProtectedRoute = ({ children }) => {
         dispatch(setUser(res.data.data));
       } else {
         localStorage.clear();
-        <Navigate to="/login" />;
+        return <Navigate to="/login" />;
       }
     } catch (error) {
       localStorage.clear();
       dispatch(hideLoading());
-      console.log(error);
+      console.error(error);
+      return <Navigate to="/login" />;
     }
   };
 
   useEffect(() => {
-    if (!user) {
+    if (token && !user) {
       getUser();
     }
-  });
-  // TODO : Fix what happens when we add the dependency array back
+  }, [token, user, dispatch]);
 
-  if (localStorage.getItem("token")) {
-    return children;
-  } else {
+  if (!token) {
     return <Navigate to="/login" />;
   }
+
+  // If user data exists and token is valid, render the children (protected route content)
+  return user ? children : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

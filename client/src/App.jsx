@@ -1,14 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "@/pages/LandingPage";
-// import DashBoardLayout from "@/pages/DashBoardLayout";
-// import Patient from "./pages/Patient";
-// import Staff from "./pages/Staff";
-// import Reports from "./pages/Reports";
-// import Team from "./pages/Team";
+import DashBoardLayout from "@/pages/DashBoardLayout";
+import Patient from "./pages/Patient";
+import Staff from "./pages/Staff";
+import Reports from "./pages/Reports";
+import Team from "./pages/Team";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import { useSelector } from "react-redux";
 import PublicRoute from "./components/PublicRoute";
+import Spinner from "./components/ui/spinner";
+import ProtectedRoute from "./components/ProtectedRoute";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
   return (
     <>
       {loading ? (
-        <p>loading...</p>
+        <Spinner />
       ) : (
         <Routes>
           <Route
@@ -43,6 +45,47 @@ function App() {
               </PublicRoute>
             }
           />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashBoardLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              path="/dashboard/patient"
+              element={
+                <ProtectedRoute>
+                  <Patient />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/staff"
+              element={
+                <ProtectedRoute>
+                  <Staff />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/reports"
+              element={
+                <ProtectedRoute>
+                  <Reports />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/team"
+              element={
+                <ProtectedRoute>
+                  <Team />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
         </Routes>
       )}
       {/* <Routes>

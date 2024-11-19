@@ -22,6 +22,10 @@ export const registerController = async (req, res) => {
     req.body.password = hashedPassword;
     const newPatient = new patientModel(req.body);
     await newPatient.save();
+    res.status(200).send({
+      success: true,
+      message: "Registration Successful",
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send({

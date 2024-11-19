@@ -21,7 +21,7 @@ const Navbar = () => {
           Login
         </Link>
         <Link
-          to="/signup"
+          to="/register"
           className="p-2 px-4 font-medium tracking-normal duration-300 rounded-lg cursor-pointer hover:rounded-xl text-sm/snug bg-primary text-primary-foreground hover:bg-primary/95"
         >
           Register
