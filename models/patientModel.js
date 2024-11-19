@@ -17,6 +17,14 @@ const patientSchema = new mongoose.Schema({
     type: String,
     required: [true, "password is require"],
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  isDoctor: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const patientModel = mongoose.model("patients", patientSchema);

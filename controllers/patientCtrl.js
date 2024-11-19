@@ -1,4 +1,5 @@
 import patientModel from "../models/patientModel.js";
+import doctorModel from "../models/doctorModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import moment from "moment";
@@ -71,7 +72,6 @@ export const loginController = async (req, res) => {
 };
 
 // Auth Controller
-
 export const authController = async (req, res) => {
   try {
     const patient = await patientModel.findById({ _id: req.body.userId });
@@ -92,6 +92,22 @@ export const authController = async (req, res) => {
     res.status(500).send({
       success: false,
       message: `Auth Controller ${error.message}`,
+    });
+  }
+};
+
+// Apply Doctor Controller
+export const applyDoctorController = async (req, res) => {
+  try {
+    const newDoctor = await doctorModel({ ...req.body, status: "pending" });
+    await newDoctor.save();
+    const adminUser = await patientModel.findOne({ isAdmin: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while applying for doctor.",
+      error,
     });
   }
 };

@@ -19,4 +19,7 @@ patientRouter.post("/register", registerController);
 // Auth || POST
 patientRouter.post("/getPatientData", authMiddleware, authController);
 
+// Apply for Doctor || POST
+patientRouter.post("/apply-doctor", authMiddleware);
+
 export default patientRouter;
