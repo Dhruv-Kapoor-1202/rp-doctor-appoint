@@ -1,5 +1,6 @@
 import patientModel from "../models/patientModel.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import moment from "moment";
 
 // Registration Controller
@@ -18,7 +19,7 @@ export const registerController = async (req, res) => {
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    req.bod.password = hashedPassword;
+    req.body.password = hashedPassword;
     const newPatient = new patientModel(req.body);
     await newPatient.save();
   } catch (error) {
@@ -48,13 +49,9 @@ export const loginController = async (req, res) => {
       });
     }
 
-    const token = JsonWebTokenError.sign(
-      { id: patient._id },
-      process.JWT_SECRET,
-      {
-        expiresIn: "1d",
-      }
-    );
+    const token = jwt.sign({ id: patient._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
     res.status(200).send({
       success: true,
       message: "Login Success",

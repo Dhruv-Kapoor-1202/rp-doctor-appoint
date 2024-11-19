@@ -1,11 +1,39 @@
 // import ModeToggle from "@/components/mode-toggle";
-import { Link } from "react-router-dom";
+import { hideLoading, showLoading } from "@/redux/features/alertSlice";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // form handler
+  const onfinishHandler = async (values) => {
+    try {
+      dispatch(showLoading());
+      const res = await axios.post("/api/v1/user/register", values);
+      dispatch(hideLoading());
+      if (res.data.success) {
+        // Toast
+        // message.success("Registered Successfully!");
+        console.log("Registered Successfully");
+        navigate("/login");
+      } else {
+        // Toast
+        // message.error(res.data.message);
+        console.log("Error");
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen p-2 bg-gradient-to-tr from-background to-background text-foreground">
       {/* Card */}
-      <div className="p-6 border rounded-xl border-border bg-card text-card-foreground">
+      <form className="p-6 border rounded-xl border-border bg-card text-card-foreground">
         <h1 className="text-2xl font-semibold">Create An Account</h1>
         <p className="pt-2 text-sm/5 text-muted-foreground">
           Enter you information below to create your account
@@ -68,7 +96,7 @@ const SignupPage = () => {
             Login
           </Link>
         </p>
-      </div>
+      </form>
       {/* <ModeToggle /> */}
     </div>
   );

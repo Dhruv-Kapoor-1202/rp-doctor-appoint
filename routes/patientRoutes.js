@@ -3,7 +3,7 @@ import {
   authController,
   loginController,
   registerController,
-} from "../controllers/patientCtrl";
+} from "../controllers/patientCtrl.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const patientRouter = express.Router();
