@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import PublicRoute from "./components/PublicRoute";
 import Spinner from "./components/ui/spinner";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PatientDetail from "./pages/PatientDetail";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -43,6 +44,14 @@ function App() {
               <PublicRoute>
                 <LandingPage />
               </PublicRoute>
+            }
+          />
+          <Route
+            path="/dashboard/patient/:id"
+            element={
+              <ProtectedRoute>
+                <PatientDetail />
+              </ProtectedRoute>
             }
           />
           <Route
