@@ -102,11 +102,34 @@ export const applyDoctorController = async (req, res) => {
     const newDoctor = await doctorModel({ ...req.body, status: "pending" });
     await newDoctor.save();
     const adminUser = await patientModel.findOne({ isAdmin: true });
+    res.status(201).send({
+      success: true,
+      message: "Applied for Doctor Account Successfully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       message: "Error while applying for doctor.",
+      error,
+    });
+  }
+};
+
+// Get All Doctors
+export const getAllDoctorsController = async (req, res) => {
+  try {
+    const doctors = await doctorModel.find({ status: "approved" });
+    res.status(200).send({
+      success: true,
+      message: "Doctors list fetched successfully",
+      data: doctors,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error occured while Fetching All Doctors",
       error,
     });
   }

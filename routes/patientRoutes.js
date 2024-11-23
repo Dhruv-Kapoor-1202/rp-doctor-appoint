@@ -1,6 +1,8 @@
 import express from "express";
 import {
+  applyDoctorController,
   authController,
+  getAllDoctorsController,
   loginController,
   registerController,
 } from "../controllers/patientCtrl.js";
@@ -20,6 +22,9 @@ patientRouter.post("/register", registerController);
 patientRouter.post("/getPatientData", authMiddleware, authController);
 
 // Apply for Doctor || POST
-patientRouter.post("/apply-doctor", authMiddleware);
+patientRouter.post("/apply-doctor", authMiddleware, applyDoctorController);
+
+// Get all Doctors || GET
+patientRouter.get("/getAllDoctors", authMiddleware, getAllDoctorsController);
 
 export default patientRouter;

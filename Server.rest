@@ -19,3 +19,31 @@ Content-Type: application/json
   "password":"password"
 }
 
+
+
+###
+
+# Apply for doctor
+
+POST http://localhost:8080/api/v1/user/apply-doctor HTTP/1.1
+Content-Type: application/json
+
+{
+  "userId": "67425d000089059063691b72",
+  "fname": "Dhruv",
+  "lname": "Kapoor",
+  "email": "dk@gmail.com",
+  "phone": "6382476404",
+  "website": "www.google.com",
+  "address": "abc, def",
+  "specialization": "Neurology",
+  "experience": "7 Years",
+  "feesPerConsualtation": 500,
+  "timings": "2024-03-25T00:00:00.000Z"
+}
+
+###
+
+#Get all doctors
+
+GET http://localhost:8080/api/v1/user/getAllDoctors HTTP/1.1
