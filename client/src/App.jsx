@@ -12,6 +12,7 @@ import PublicRoute from "./components/PublicRoute";
 import Spinner from "./components/ui/spinner";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PatientDetail from "./pages/PatientDetail";
+import ApplyDoc from "./pages/ApplyDoc";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -91,6 +92,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Team />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/applydoc"
+              element={
+                <ProtectedRoute>
+                  <ApplyDoc />
                 </ProtectedRoute>
               }
             />

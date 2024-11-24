@@ -68,3 +68,13 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+
+@layer utilities {
+  .scrollbar {
+    @apply [&::-webkit-scrollbar]:w-1 
+    [&::-webkit-scrollbar-track]:bg-border
+    [&::-webkit-scrollbar-thumb]:rounded-full
+    [&::-webkit-scrollbar-thumb]:bg-primary/50
+    [&::-webkit-scrollbar-thumb:hover]:bg-primary;
+  }
+}

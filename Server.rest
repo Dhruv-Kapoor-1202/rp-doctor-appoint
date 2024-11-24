@@ -38,7 +38,7 @@ Content-Type: application/json
   "address": "abc, def",
   "specialization": "Neurology",
   "experience": "7 Years",
-  "feesPerConsualtation": 500,
+  "feesPerConsultation": 500,
   "timings": "2024-03-25T00:00:00.000Z"
 }
 

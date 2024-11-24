@@ -5,6 +5,7 @@ import {
   DashboardIcon,
   FileTextIcon,
   GlobeIcon,
+  IdCardIcon,
   PersonIcon,
 } from "@radix-ui/react-icons";
 import { Route, Routes } from "react-router-dom";
@@ -13,6 +14,7 @@ import Patient from "./Patient";
 import Staff from "./Staff";
 import Reports from "./Reports";
 import Team from "./Team";
+import ApplyDoc from "./ApplyDoc";
 
 const sidebarData = [
   {
@@ -50,6 +52,13 @@ const sidebarData = [
     alert: true,
     link: "/dashboard/team",
   },
+  {
+    icon: <IdCardIcon className="size-4 sm:size-6" />,
+    text: "Apply",
+    active: false,
+    alert: true,
+    link: "/dashboard/applydoc",
+  },
 ];
 
 const DashBoardLayout = () => {
@@ -78,6 +87,7 @@ const DashBoardLayout = () => {
           <Route path="/staff" element={<Staff />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/applydoc" element={<ApplyDoc />} />
         </Routes>
       </div>
     </main>
