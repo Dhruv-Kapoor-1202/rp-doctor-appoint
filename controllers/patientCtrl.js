@@ -1,5 +1,6 @@
 import patientModel from "../models/patientModel.js";
 import doctorModel from "../models/doctorModel.js";
+import appointmentModel from "../models/appointmentModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import moment from "moment";
@@ -130,6 +131,49 @@ export const getAllDoctorsController = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Error occured while Fetching All Doctors",
+      error,
+    });
+  }
+};
+
+// Book Appointment Controller
+export const bookAppointmentController = async (req, res) => {
+  try {
+    req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
+    req.body.time = moment(req.body.time, "HH:mm").toISOString();
+    req.body.status = "pending";
+    const newAppointment = new appointmentModel(req.body);
+    await newAppointment.save();
+    res.status(200).send({
+      success: true,
+      message: "Appointment Booked succesfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while booking appointment.",
+      error,
+    });
+  }
+};
+
+// Get All User Appointments Controller
+export const userAppointmentsController = async (req, res) => {
+  try {
+    const appointments = await appointmentModel.find({
+      userId: req.body.userId,
+    });
+    res.status(200).send({
+      success: true,
+      message: "User Appointments fetched successfully",
+      data: appointments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while fetching User Appointments",
       error,
     });
   }

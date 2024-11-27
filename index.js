@@ -5,6 +5,7 @@ import morgan from "morgan";
 import connectDB from "./config/db.js";
 import cors from "cors";
 import patientRouter from "./routes/patientRoutes.js";
+import doctorRouter from "./routes/doctorRoutes.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(cors());
 
 // routes
 app.use("/api/v1/user", patientRouter);
+app.use("/api/v1/doctor", doctorRouter);
 
 // port
 const PORT = process.env.PORT || 8080;
