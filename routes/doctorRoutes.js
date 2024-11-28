@@ -1,6 +1,7 @@
 import express from "express";
 import {
   doctorAppointmentsController,
+  getAllDoctorsController,
   getDoctorByIdController,
   getDoctorInfoController,
   updateProfileController,

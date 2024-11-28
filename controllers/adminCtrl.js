@@ -1,5 +1,5 @@
-import patientModel from "../models/patientModel";
-import doctorModel from "../models/doctorModel";
+import patientModel from "../models/patientModel.js";
+import doctorModel from "../models/doctorModel.js";
 
 // Get All Users Controller
 export const getAllUsersController = async (req, res) => {

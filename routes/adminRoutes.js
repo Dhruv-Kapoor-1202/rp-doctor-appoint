@@ -2,8 +2,8 @@ import express from "express";
 import {
   getAllDoctorsController,
   getAllUsersController,
-} from "../controllers/adminCtrl";
-import { authMiddleware } from "../middlewares/authMiddleware";
+} from "../controllers/adminCtrl.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const adminRouter = express.Router();
 
