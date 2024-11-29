@@ -15,6 +15,7 @@ import Staff from "./Staff";
 import Reports from "./Reports";
 import Team from "./Team";
 import ApplyDoc from "./ApplyDoc";
+import Doctor from "./Doctor";
 
 const sidebarData = [
   {
@@ -30,6 +31,13 @@ const sidebarData = [
     active: false,
     alert: true,
     link: "/dashboard/patient",
+  },
+  {
+    icon: <PersonIcon className="size-4 sm:size-6" />,
+    text: "doctor",
+    active: false,
+    alert: true,
+    link: "/dashboard/doctor",
   },
   {
     icon: <FileTextIcon className="size-4 sm:size-6" />,
@@ -84,6 +92,7 @@ const DashBoardLayout = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/patient" element={<Patient />} />
+          <Route path="/doctor" element={<Doctor />} />
           <Route path="/staff" element={<Staff />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/team" element={<Team />} />

@@ -13,6 +13,7 @@ import Spinner from "./components/ui/spinner";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PatientDetail from "./pages/PatientDetail";
 import ApplyDoc from "./pages/ApplyDoc";
+import Doctor from "./pages/Doctor";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -68,6 +69,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Patient />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/doctor"
+              element={
+                <ProtectedRoute>
+                  <Doctor />
                 </ProtectedRoute>
               }
             />

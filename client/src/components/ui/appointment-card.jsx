@@ -25,7 +25,7 @@ const AppointmentCard = ({ name, age, date, timing, onCardAction }) => {
         className="flex items-center justify-start w-full gap-2 duration-200 cursor-pointer"
       >
         <img
-          src="https://avatars.githubusercontent.com/u/101688220?v=4"
+          src="https://avatars.githubusercontent.com/u/124599?v=4"
           alt="Avatar"
           className="w-10 h-10 rounded-lg"
         />

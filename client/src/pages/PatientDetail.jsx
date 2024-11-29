@@ -6,9 +6,9 @@ const PatientDetail = () => {
       <div className="container flex flex-col items-center w-full max-w-screen-md py-8 mx-auto ">
         <div className="grid gap-4 sm:grid-cols-2">
           <img
-            src=""
+            src="https://avatars.githubusercontent.com/u/124599?v=4"
             alt="img"
-            className="w-full sm:w-[350px] h-[400px] sm:h-[350px] border border-border bg-accent rounded-3xl animate-pulse"
+            className="w-full sm:w-[350px] h-[400px] sm:h-[350px] border border-border bg-accent rounded-3xl "
           />
           <div className="p-3">
             <p className="p-1 px-3 text-sm/4 bg-primary text-primary-foreground w-fit rounded-3xl">
@@ -61,6 +61,19 @@ const PatientDetail = () => {
           repellat culpa providen
         </p>
       </div>
+      {/* <div className="grid grid-cols-12 gap-2 p-2 border border-border rounded-3xl">
+        <img
+          className="object-cover w-full border-none col-span-full bg-secondary max-h-96 sm:col-span-6 lg:h-52 lg:col-span-2 rounded-2xl"
+          src="https://avatars.githubusercontent.com/u/124599?v=4"
+        />
+        <div className="grid grid-rows-3 gap-2 p-2 border col-span-full border-border sm:col-span-6 rounded-2xl lg:col-span-3">
+          <div className="flex items-center justify-start p-3 duration-200 bg-secondary/50 hover:bg-secondary/70 rounded-xl place-items-center">
+            <h1 className="text-lg font-semibold text-secondary-foreground">
+              Random Person
+            </h1>
+          </div>
+        </div>
+      </div> */}
       <ModeToggle />
     </>
   );

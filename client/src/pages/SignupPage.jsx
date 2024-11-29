@@ -101,7 +101,7 @@ const SignupPage = () => {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              placeholder="Dhruv"
+              placeholder="Random"
               className="p-2 text-sm border rounded-md bg-background placeholder:text-muted-foreground border-border text-foreground"
             />
           </div>
@@ -115,7 +115,7 @@ const SignupPage = () => {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              placeholder="Kapoor"
+              placeholder="Person"
               className="p-2 text-sm border rounded-md bg-background placeholder:text-muted-foreground border-border text-foreground"
             />
           </div>
@@ -130,7 +130,7 @@ const SignupPage = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="dk@example.com"
+            placeholder="rp@example.com"
             className="p-2 text-sm border rounded-md bg-background placeholder:text-muted-foreground border-border text-foreground"
           />
         </div>

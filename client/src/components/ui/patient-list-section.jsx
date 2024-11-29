@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const patientData = [
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Dhruv Kapoor",
     id: "DK-1202",
     disease: "Main Character Syndrome",
@@ -10,7 +10,7 @@ const patientData = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dignissimos, voluptates soluta odit deserunt esse aliquam tenetur itaque nemo. Culpa eos cupiditate repudiandae et odio, amet quos. Magni eveniet assumenda eos, vel, itaque hic ab, provident similique necessitatibus saepe tempora dolorum. Officiis quod vitae quae explicabo excepturi quas repellat sit.",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Aryan Sharma",
     id: "AS-3001",
     disease: "Overachiever's Flu",
@@ -18,7 +18,7 @@ const patientData = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dignissimos, voluptates soluta odit deserunt esse aliquam tenetur itaque nemo. Culpa eos cupiditate repudiandae et odio, amet quos. Magni eveniet assumenda eos, vel, itaque hic ab, provident similique necessitatibus saepe tempora dolorum. Officiis quod vitae quae explicabo excepturi quas repellat sit.",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Priya Singh",
     id: "PS-4507",
     disease: "Coffee Dependency",

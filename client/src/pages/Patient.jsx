@@ -2,42 +2,42 @@ import { Link } from "react-router-dom";
 
 const patientData = [
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Dhruv Kapoor",
     id: "DK-1202",
     disease: "Main Character Syndrome",
     room: "A-105",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Aryan Sharma",
     id: "AS-3001",
     disease: "Overachiever's Flu",
     room: "B-202",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Priya Singh",
     id: "PS-4507",
     disease: "Coffee Dependency",
     room: "C-303",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Dhruv Kapoor",
     id: "DK-1202",
     disease: "Main Character Syndrome",
     room: "A-105",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Aryan Sharma",
     id: "AS-3001",
     disease: "Overachiever's Flu",
     room: "B-202",
   },
   {
-    img: "https://avatars.githubusercontent.com/u/101688220?v=4",
+    img: "https://avatars.githubusercontent.com/u/124599?v=4",
     name: "Priya Singh",
     id: "PS-4507",
     disease: "Coffee Dependency",

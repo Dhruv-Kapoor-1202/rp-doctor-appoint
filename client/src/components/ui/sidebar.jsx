@@ -7,10 +7,12 @@ import {
 import { createContext, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ModeToggle from "./mode-toggle";
+import { useSelector } from "react-redux";
 
 const SidebarContext = createContext();
 
 const Sidebar = ({ children }) => {
+  const { user } = useSelector((state) => state.user);
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -50,7 +52,7 @@ const Sidebar = ({ children }) => {
 
         <div className="flex items-center justify-center p-3 border-t border-border">
           <img
-            src="https://avatars.githubusercontent.com/u/101688220?v=4"
+            src="https://avatars.githubusercontent.com/u/124599?v=4"
             alt=""
             className="w-10 h-10 rounded-md"
           />
@@ -61,9 +63,11 @@ const Sidebar = ({ children }) => {
             `}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">Dhruv Kapoor</h4>
+              <h4 className="font-semibold">
+                {user.fname} {user.lname}
+              </h4>
               <span className="text-xs text-muted-foreground">
-                dk1202@gmail.com
+                {user.email}
               </span>
             </div>
             {/* <DotsVerticalIcon size={20} /> */}
