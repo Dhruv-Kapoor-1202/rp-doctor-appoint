@@ -13,7 +13,7 @@ import Dashboard from "./DashBoard";
 import Patient from "./Patient";
 import Staff from "./Staff";
 import Reports from "./Reports";
-import Team from "./Team";
+// import Team from "./Team";
 import ApplyDoc from "./ApplyDoc";
 import Doctor from "./Doctor";
 
@@ -33,7 +33,7 @@ const sidebarData = [
     link: "/dashboard/patient",
   },
   {
-    icon: <PersonIcon className="size-4 sm:size-6" />,
+    icon: <GlobeIcon className="size-4 sm:size-6" />,
     text: "doctor",
     active: false,
     alert: true,
@@ -53,13 +53,13 @@ const sidebarData = [
     alert: true,
     link: "/dashboard/reports",
   },
-  {
-    icon: <GlobeIcon className="size-4 sm:size-6" />,
-    text: "team",
-    active: false,
-    alert: true,
-    link: "/dashboard/team",
-  },
+  // {
+  //   icon: <GlobeIcon className="size-4 sm:size-6" />,
+  //   text: "team",
+  //   active: false,
+  //   alert: true,
+  //   link: "/dashboard/team",
+  // },
   {
     icon: <IdCardIcon className="size-4 sm:size-6" />,
     text: "Apply",
@@ -95,7 +95,7 @@ const DashBoardLayout = () => {
           <Route path="/doctor" element={<Doctor />} />
           <Route path="/staff" element={<Staff />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/team" element={<Team />} />
+          {/* <Route path="/team" element={<Team />} /> */}
           <Route path="/applydoc" element={<ApplyDoc />} />
         </Routes>
       </div>

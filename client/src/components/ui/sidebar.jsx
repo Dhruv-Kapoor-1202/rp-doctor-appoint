@@ -8,6 +8,7 @@ import { createContext, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ModeToggle from "./mode-toggle";
 import { useSelector } from "react-redux";
+import LogoutBtn from "../LogoutBtn";
 
 const SidebarContext = createContext();
 
@@ -71,6 +72,7 @@ const Sidebar = ({ children }) => {
               </span>
             </div>
             {/* <DotsVerticalIcon size={20} /> */}
+            <LogoutBtn />
             <ModeToggle />
           </div>
         </div>

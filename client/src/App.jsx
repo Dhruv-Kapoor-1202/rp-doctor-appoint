@@ -4,7 +4,7 @@ import DashBoardLayout from "@/pages/DashBoardLayout";
 import Patient from "./pages/Patient";
 import Staff from "./pages/Staff";
 import Reports from "./pages/Reports";
-import Team from "./pages/Team";
+// import Team from "./pages/Team";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import { useSelector } from "react-redux";
@@ -96,14 +96,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/dashboard/team"
               element={
                 <ProtectedRoute>
                   <Team />
                 </ProtectedRoute>
               }
-            />
+            /> */}
             <Route
               path="/dashboard/applydoc"
               element={
