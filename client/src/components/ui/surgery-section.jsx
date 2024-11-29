@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 const SurgerySection = () => {
   return (
     <div className="p-2 border md:col-span-6 lg:col-span-8 bg-card text-card-foreground border-border rounded-3xl">
-      <h2 className="p-2 text-lg font-semibold">Surgery</h2>
+      <h2 className="p-2 text-lg font-semibold">Schedule</h2>
       <div className="flex gap-2">
         <button className="flex items-center justify-center w-6 h-6 duration-200 rounded-full hover:bg-secondary/80 bg-secondary text-secondary-foreground">
           <ChevronLeftIcon />
