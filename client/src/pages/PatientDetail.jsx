@@ -1,6 +1,9 @@
 import ModeToggle from "@/components/ui/mode-toggle";
+import { useParams } from "react-router-dom";
 
 const PatientDetail = () => {
+  const { id } = useParams();
+
   return (
     <>
       <div className="container flex flex-col items-center w-full max-w-screen-md py-8 mx-auto ">
@@ -12,7 +15,7 @@ const PatientDetail = () => {
           />
           <div className="p-3">
             <p className="p-1 px-3 text-sm/4 bg-primary text-primary-foreground w-fit rounded-3xl">
-              ID: 123
+              ID: {id}
             </p>
             <h1 className="pt-4 text-lg font-semibold md:text-xl">
               Dhruv Kapoor

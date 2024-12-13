@@ -3,11 +3,8 @@ const AboutSection = () => {
     <section className="container grid grid-cols-1 gap-4 py-8 sm:py-12 md:grid-cols-4 lg:grid-cols-6">
       <div className="col-span-1 place-content-center md:col-span-4 lg:col-span-2">
         <p className="italic text-balance text-base/7">
-          At{" "}
-          <span className="underline underline-offset-2">
-            [Your Infirmary Management System Name]
-          </span>
-          , we&apos;re committed to making healthcare accessible, efficient, and
+          At <span className="underline underline-offset-2">VitalWave</span>,
+          we&apos;re committed to making healthcare accessible, efficient, and
           focused on the patient experience. Our platform brings doctors and
           patients together in a seamless digital space.
         </p>

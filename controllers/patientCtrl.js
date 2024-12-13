@@ -158,6 +158,25 @@ export const bookAppointmentController = async (req, res) => {
   }
 };
 
+export const book2Controller = async (req, res) => {
+  const { userId, doctorId } = req.body;
+  const newAppointment = new appointmentModel({ userId, doctorId });
+  try {
+    await newAppointment.save();
+    res.status(200).send({
+      success: true,
+      message: "Appointment Booked succesfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while booking apoointment.",
+      error,
+    });
+  }
+};
+
 // Get All User Appointments Controller
 export const userAppointmentsController = async (req, res) => {
   try {

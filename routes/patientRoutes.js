@@ -2,6 +2,7 @@ import express from "express";
 import {
   applyDoctorController,
   authController,
+  book2Controller,
   bookAppointmentController,
   getAllDoctorsController,
   loginController,
@@ -36,10 +37,12 @@ patientRouter.post(
   bookAppointmentController
 );
 
+patientRouter.post("/book-2", authMiddleware, book2Controller);
+
 // Get User Appointments || GETz
-patientRouter.get(
+patientRouter.post(
   "/user-appointments",
-  authMiddleware,
+  // authMiddleware,
   userAppointmentsController
 );
 export default patientRouter;

@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppointmentCard from "./appointment-card";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { toast } from "sonner";
 
 const RightSidebar = () => {
+  const { user } = useSelector((state) => state.user);
+
   // State to track appointments
   const [appointments, setAppointments] = useState([
     {
@@ -18,21 +23,34 @@ const RightSidebar = () => {
       date: "12.02.2024",
       timing: "11:00 - 12:00",
     },
-    {
-      id: 3,
-      name: "Siddharth Malhotra",
-      age: 25,
-      date: "15.02.2024",
-      timing: "1:00 - 2:00",
-    },
-    {
-      id: 4,
-      name: "Adnan Virgil",
-      age: 40,
-      date: "20.02.2024",
-      timing: "3:00 - 4:00",
-    },
   ]);
+
+  const getAppointements = async () => {
+    try {
+      const userId = user._id;
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/user/user-appointments",
+        { userId }
+        // {
+        //   headers: {
+        //     Authorization: "Bearer " + localStorage.getItem("token"),
+        //   },
+        // }
+      );
+      if (res.data.success) {
+        console.log(res.data.data);
+        setAppointments(res.data.data);
+      }
+      toast.success(res.data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message || "An error occurred");
+    }
+  };
+
+  useEffect(() => {
+    getAppointements();
+  }, []);
 
   // Function to handle card action (Accept/Reject)
   const handleCardAction = (id) => {
@@ -65,11 +83,11 @@ const RightSidebar = () => {
       <ul className="flex flex-col w-full gap-2">
         {appointments.map((appointment) => (
           <AppointmentCard
-            key={appointment.id}
-            name={appointment.name}
-            age={appointment.age}
-            date={appointment.date}
-            timing={appointment.timing}
+            key={appointment._id}
+            name={appointment.userId}
+            age={appointment.doctorId}
+            date={appointment.status}
+            timing={appointment.status}
             onCardAction={() => handleCardAction(appointment.id)}
           />
         ))}

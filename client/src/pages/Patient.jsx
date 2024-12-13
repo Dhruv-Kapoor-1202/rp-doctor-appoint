@@ -93,7 +93,7 @@ const Patient = () => {
           return (
             <li key={index}>
               <Link
-                to={`./${patient.id}`}
+                to={`./${patient._id}`}
                 className="grid items-center gap-2 p-2 sm:grid-cols-6 lg:grid-cols-7"
               >
                 <p className="text-sm">P-{index + 1}</p>

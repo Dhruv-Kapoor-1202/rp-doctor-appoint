@@ -12,15 +12,12 @@ const appointmentSchema = new mongoose.Schema(
     },
     doctorInfo: {
       type: String,
-      required: true,
     },
     userInfo: {
       type: String,
-      required: true,
     },
     date: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
@@ -29,7 +26,6 @@ const appointmentSchema = new mongoose.Schema(
     },
     time: {
       type: String,
-      required: true,
     },
   },
   {

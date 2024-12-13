@@ -115,17 +115,6 @@ function App() {
           </Route>
         </Routes>
       )}
-      {/* <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<DashBoardLayout />}>
-          <Route path="/dashboard/patient" element={<Patient />} />
-          <Route path="/dashboard/staff" element={<Staff />} />
-          <Route path="/dashboard/reports" element={<Reports />} />
-          <Route path="/dashboard/team" element={<Team />} />
-        </Route>
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes> */}
     </>
   );
 }

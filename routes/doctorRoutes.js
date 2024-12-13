@@ -22,7 +22,7 @@ doctorRouter.post("/getDoctorById", authMiddleware, getDoctorByIdController);
 // Doc Appointments || GET
 doctorRouter.get(
   "/doctor-appointments",
-  authMiddleware,
+  // authMiddleware,
   doctorAppointmentsController
 );
 

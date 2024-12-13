@@ -1,5 +1,5 @@
 import ModeToggle from "@/components/ui/mode-toggle";
-import { GridIcon } from "@radix-ui/react-icons";
+// import { GridIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -7,8 +7,9 @@ const Navbar = () => {
     <div className="container flex flex-col items-center justify-between gap-2 py-2 md:py-4 sm:flex-row">
       {/* Logo */}
       <div className="flex items-center justify-center gap-1 p-2 px-2 duration-300 border rounded-lg cursor-pointer border-border hover:bg-secondary/40">
-        <GridIcon className="size-[1.5rem] " />
-        <p className="text-lg/5">LoGomaN</p>
+        {/* <GridIcon className="size-[1.5rem] " /> */}
+        <img src="./hospital-logo.png" className="rounded-sm size-8" />
+        <p className="text-lg/5">VitalWave </p>
       </div>
 
       {/* Buttons */}

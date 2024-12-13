@@ -1,12 +1,34 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { toast } from "sonner";
 
 const Doctor = () => {
-  // const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const [doctors, setDoctors] = useState([]);
   // const dispatch = useDispatch();
+
+  const bookDoctor = async ({ doctorId }) => {
+    try {
+      const userId = user._id;
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/user/book-2",
+        { userId, doctorId },
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+      if (res.data.success) {
+        console.log(res.data.message);
+      }
+      toast.success(res.data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message || "An error occurred");
+    }
+  };
 
   const getAllDoctors = async () => {
     try {
@@ -59,7 +81,10 @@ const Doctor = () => {
                   alt={doctor.name}
                   className="size-8 rounded-xl"
                 />
-                <button className="p-2 px-6 text-sm rounded-lg text-secondary-foreground bg-secondary/70 w-fit hover:bg-secondary">
+                <button
+                  onClick={() => bookDoctor({ doctorId: doctor.userId })}
+                  className="p-2 px-6 text-sm rounded-lg text-secondary-foreground bg-secondary/70 w-fit hover:bg-secondary"
+                >
                   Book
                 </button>
               </div>
