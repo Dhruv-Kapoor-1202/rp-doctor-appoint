@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import AppointmentCard from "./appointment-card";
 import { useSelector } from "react-redux";
@@ -25,7 +26,7 @@ const RightSidebar = () => {
     },
   ]);
 
-  const getAppointements = async () => {
+  const getUserAppointements = async () => {
     try {
       const userId = user._id;
       const res = await axios.post(
@@ -38,6 +39,7 @@ const RightSidebar = () => {
         // }
       );
       if (res.data.success) {
+        console.log(user);
         console.log(res.data.data);
         setAppointments(res.data.data);
       }
@@ -49,7 +51,7 @@ const RightSidebar = () => {
   };
 
   useEffect(() => {
-    getAppointements();
+    if (!user.isDoctor) getUserAppointements();
   }, []);
 
   // Function to handle card action (Accept/Reject)
@@ -62,7 +64,7 @@ const RightSidebar = () => {
   return (
     <div className="w-full h-full p-2 border sm:col-span-5 md:col-span-4 lg:col-span-3 bg-card text-card-foreground border-border rounded-3xl">
       {/* Name Card */}
-      <div className="flex items-center justify-start w-full gap-2 p-3 rounded-2xl bg-accent text-accent-foreground">
+      {/* <div className="flex items-center justify-start w-full gap-2 p-3 rounded-2xl bg-accent text-accent-foreground">
         <img
           src="https://avatars.githubusercontent.com/u/124599?v=4"
           alt=""
@@ -74,7 +76,7 @@ const RightSidebar = () => {
             <span className="text-xs text-muted-foreground">Cardiology</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <h2 className="p-2 font-semibold text-secondary-foreground">
         Planned Consultation

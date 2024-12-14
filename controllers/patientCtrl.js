@@ -85,6 +85,7 @@ export const authController = async (req, res) => {
     } else {
       res.status(200).send({
         success: true,
+        message: "User fetched successfully",
         data: patient,
       });
     }

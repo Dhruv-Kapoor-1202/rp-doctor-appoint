@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "client": "npm run dev --prefix ./client"
+    "client": "npm run dev --prefix ./client-2"
   },
   "author": "Dhruv Kapoor",
   "license": "MIT",
