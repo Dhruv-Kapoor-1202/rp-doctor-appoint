@@ -1,7 +1,14 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import PublicRoute from "@/routes/PublicRoute";
-import { LandingPage, Layout, LoginPage, SignupPage } from "@/pages/pages";
+import {
+  ApplyDoctor,
+  Dashboard,
+  LandingPage,
+  Layout,
+  LoginPage,
+  SignupPage,
+} from "@/pages/pages";
 import ProtectedRoute, { RootState } from "@/routes/ProtectedRoute";
 import Spinner from "@/components/spinner";
 
@@ -44,14 +51,117 @@ function App() {
 
           {/* Protected Routes */}
           <>
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Layout />
-                </ProtectedRoute>
-              }
-            />
+            {/* User Routes */}
+            <>
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/bookdoctor"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/applydoctor"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <ApplyDoctor />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+            </>
+
+            {/* Doctor Routes */}
+            <>
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/patients"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/appointments"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+            </>
+
+            {/* Admin Routes */}
+            <>
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/patients"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/doctors"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/approvals"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+            </>
           </>
         </Routes>
       )}

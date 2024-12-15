@@ -1,16 +1,21 @@
-import Sidebar from "@/components/my/sidebar";
-import { RootState } from "@/routes/ProtectedRoute";
-import { useSelector } from "react-redux";
+import AppSidebar from "@/components/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { ReactNode } from "react";
+// import { Route, Routes } from "react-router-dom";
 
-const Layout = () => {
-  const { user } = useSelector((state: RootState) => state.user);
-  console.log(user);
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <SidebarProvider>
       {/* Sidebar (user, doctor, admin) */}
-      <Sidebar />
+      <AppSidebar />
+
       {/* Main content (user, doctor, admin)  */}
-    </>
+      <main className="w-full">
+        <SidebarTrigger />
+        {/* <LogoutButton /> */}
+        {children}
+      </main>
+    </SidebarProvider>
   );
 };
 
