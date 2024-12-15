@@ -26,7 +26,10 @@ doctorRouter.get(
   doctorAppointmentsController
 );
 
+// Accept Appointment || POST
+doctorRouter.post("/acceptAppointment/:id", acceptAppointmentController);
+
 // All Doctors || GET
-doctorRouter.get("", authMiddleware, getAllDoctorsController);
+doctorRouter.get("/getAllDoctors", authMiddleware, getAllDoctorsController);
 
 export default doctorRouter;

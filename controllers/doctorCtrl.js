@@ -85,6 +85,15 @@ export const doctorAppointmentsController = async (req, res) => {
   }
 };
 
+// Accept Appointment Controller
+export const acceptAppointmentController = async (req, res) => {
+  try {
+    const appointment = await appointmentModel.findOne({ _id: req.params.id });
+    appointment.status = "approved";
+    await appointment.save();
+  } catch (error) {}
+};
+
 // Get All Doctors Controller
 export const getAllDoctorsController = async (req, res) => {
   try {
