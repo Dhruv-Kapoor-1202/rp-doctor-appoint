@@ -1,12 +1,14 @@
-import LandingPage from "./landingPage";
-import LoginPage from "./loginPage";
-import SignupPage from "./signupPage";
+import LandingPage from "./public/landingPage";
+import LoginPage from "./public/loginPage";
+import SignupPage from "./public/signupPage";
 import Layout from "./layout";
 import Dashboard from "./dashboardPage";
-import ApplyDoctor from "./applyDoctorPage";
-import Patients from "./patientsPage";
-import Doctors from "./doctorsPage";
-import Approvals from "./approvalsPage";
+import Patients from "./admin/patientsPage";
+import Doctors from "./admin/doctorsPage";
+import Approvals from "./admin/approvalsPage";
+import PatientInfo from "./admin/patientInfoPage";
+import ApplyDoctor from "./user/applyDoctorPage";
+import BookDoctor from "./user/bookDoctorPage";
 
 export {
   LandingPage,
@@ -14,8 +16,10 @@ export {
   SignupPage,
   Layout,
   Dashboard,
-  ApplyDoctor,
   Patients,
   Doctors,
   Approvals,
+  PatientInfo,
+  ApplyDoctor,
+  BookDoctor,
 };

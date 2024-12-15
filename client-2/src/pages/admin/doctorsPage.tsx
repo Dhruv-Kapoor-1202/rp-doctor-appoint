@@ -13,34 +13,42 @@ import { toast } from "sonner";
 import { URL } from "@/URL";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-export type Patient = {
+export type Doctor = {
   _id?: string;
+  userId?: string;
   fname?: string;
   lname?: string;
   email?: string;
-  isDoctor?: boolean;
-  isAdmin?: boolean;
+  phone?: string;
+  website?: string;
+  address?: string;
+  specialization?: string;
+  experience?: string;
+  feesPerConsultation?: number;
+  status?: "pending" | "approved";
+  timings?: string[];
 };
 
-const Patients = () => {
-  const [patients, setPatients] = useState<Patient[]>();
-
-  const navigate = useNavigate();
+const Doctors = () => {
+  const [Doctors, setDoctors] = useState<Doctor[]>();
 
   useEffect(() => {
-    const getPatients = async () => {
+    const getDoctors = async () => {
       try {
-        const res = await axios.get(`${URL}/api/v1/admin/getAllUsers`, {
+        const res = await axios.get(`${URL}/api/v1/admin/getAllDoctors`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.success) {
-          console.log("Patients Fetched Successfully");
-          setPatients(res.data.data);
+          // console.log("Doctors Fetched Successfully");
+          setDoctors(
+            res.data.data.filter(
+              (doctor: Doctor) => doctor.status === "approved"
+            )
+          );
           toast.success(res.data.message);
         } else {
           console.log("Error: " + res.data.message);
@@ -51,35 +59,34 @@ const Patients = () => {
         toast.error(`${error}`);
       }
     };
-    getPatients();
+    getDoctors();
   }, []);
 
   return (
     <>
       <Table>
-        <TableCaption>All Users</TableCaption>
+        <TableCaption>All Doctors</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[60px]"></TableHead>
             <TableHead>ID</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
-            <TableHead className="text-right">Role</TableHead>
+            <TableHead>Specialization</TableHead>
+            {/* <TableHead className="text-right">Status</TableHead> */}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {patients?.map((patient, index) => (
-            <TableRow key={index} onClick={() => navigate(`./${patient._id}`)}>
+          {Doctors?.map((doctor, index) => (
+            <TableRow key={index}>
               <TableCell className="font-medium">{index + 1}</TableCell>
-              <TableCell>{patient._id}</TableCell>
+              <TableCell>{doctor._id}</TableCell>
               <TableCell>
-                {patient.fname} {patient.lname}
+                {doctor.fname} {doctor.lname}
               </TableCell>
-              <TableCell>{patient.email}</TableCell>
-              <TableCell className="text-right">
-                {patient.isDoctor ? "Doctor" : "User"}{" "}
-                {patient.isAdmin ? "/ Admin" : ""}
-              </TableCell>
+              <TableCell>{doctor.email}</TableCell>
+              <TableCell>{doctor.specialization}</TableCell>
+              {/* <TableCell className="text-right">{doctor.status}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>
@@ -94,4 +101,4 @@ const Patients = () => {
   );
 };
 
-export default Patients;
+export default Doctors;

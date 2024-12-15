@@ -4,11 +4,13 @@ import PublicRoute from "@/routes/PublicRoute";
 import {
   ApplyDoctor,
   Approvals,
+  BookDoctor,
   Dashboard,
   Doctors,
   LandingPage,
   Layout,
   LoginPage,
+  PatientInfo,
   Patients,
   SignupPage,
 } from "@/pages/pages";
@@ -71,7 +73,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Layout>
-                      <Dashboard />
+                      <BookDoctor />
                     </Layout>
                   </ProtectedRoute>
                 }
@@ -161,6 +163,18 @@ function App() {
                     <Layout>
                       <Approvals />
                     </Layout>
+                  </ProtectedRoute>
+                }
+              />
+            </>
+
+            {/* Dynamic Routes */}
+            <>
+              <Route
+                path="/patients/:id"
+                element={
+                  <ProtectedRoute>
+                    <PatientInfo />
                   </ProtectedRoute>
                 }
               />

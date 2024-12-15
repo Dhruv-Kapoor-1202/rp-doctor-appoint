@@ -1,6 +1,26 @@
 import patientModel from "../models/patientModel.js";
 import doctorModel from "../models/doctorModel.js";
 
+// Get Single User Controller
+export const getUserController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await patientModel.findById(id);
+    user.password = undefined;
+    res.status(200).send({
+      success: true,
+      message: "User Fetched Successfully",
+      data: user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while fetching user",
+    });
+  }
+};
+
 // Get All Users Controller
 export const getAllUsersController = async (req, res) => {
   try {

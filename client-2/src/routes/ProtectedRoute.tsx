@@ -7,13 +7,13 @@ import axios from "axios";
 import { setUser } from "@/redux/features/userSlice";
 
 export type User = {
-  _id: string;
-  fname: string;
-  lname: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  isDoctor: boolean;
+  _id?: string;
+  fname?: string;
+  lname?: string;
+  email?: string;
+  password?: string;
+  isAdmin?: boolean;
+  isDoctor?: boolean;
 };
 
 export type RootState = {

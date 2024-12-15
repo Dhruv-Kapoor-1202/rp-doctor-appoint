@@ -13,6 +13,9 @@ import { toast } from "sonner";
 import { URL } from "@/URL";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
+import { useSelector } from "react-redux";
+import { RootState } from "@/routes/ProtectedRoute";
 
 export type Doctor = {
   _id?: string;
@@ -30,8 +33,10 @@ export type Doctor = {
   timings?: string[];
 };
 
-const Doctors = () => {
+const BookDoctor = () => {
   const [Doctors, setDoctors] = useState<Doctor[]>();
+
+  const { user } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     const getDoctors = async () => {
@@ -41,9 +46,9 @@ const Doctors = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.success) {
-          console.log("Doctors Fetched Successfully");
+          // console.log("Doctors Fetched Successfully");
           setDoctors(
             res.data.data.filter(
               (doctor: Doctor) => doctor.status === "approved"
@@ -62,31 +67,68 @@ const Doctors = () => {
     getDoctors();
   }, []);
 
+  const bookAppointment = async ({ doctorId }: { doctorId: string }) => {
+    try {
+      const res = await axios.post(
+        `${URL}/api/v1/user/book-appointment`,
+        {
+          userId: user?._id,
+          doctorId: doctorId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      console.log(res.data);
+      if (res.data.success) {
+        toast.success(res.data.message);
+      } else {
+        toast.error(res.data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      toast.error(`${error}`);
+    }
+  };
+
   return (
     <>
       <Table>
-        <TableCaption>All Doctors / Doctor Applicants</TableCaption>
+        <TableCaption>All Doctors</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[60px]"></TableHead>
-            <TableHead>ID</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Specialization</TableHead>
-            {/* <TableHead className="text-right">Status</TableHead> */}
+            <TableHead>Phone No.</TableHead>
+            <TableHead className="text-center">Book Appointment</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {Doctors?.map((doctor, index) => (
             <TableRow key={index}>
               <TableCell className="font-medium">{index + 1}</TableCell>
-              <TableCell>{doctor._id}</TableCell>
               <TableCell>
                 {doctor.fname} {doctor.lname}
               </TableCell>
               <TableCell>{doctor.email}</TableCell>
               <TableCell>{doctor.specialization}</TableCell>
-              {/* <TableCell className="text-right">{doctor.status}</TableCell> */}
+              <TableCell>{doctor.phone}</TableCell>
+              <TableCell className="flex justify-center">
+                <Button
+                  onClick={() =>
+                    bookAppointment({
+                      doctorId: doctor.userId || "675e9add93c28e032a17c27d",
+                    })
+                  }
+                  size={"sm"}
+                >
+                  Book
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -101,4 +143,4 @@ const Doctors = () => {
   );
 };
 
-export default Doctors;
+export default BookDoctor;
