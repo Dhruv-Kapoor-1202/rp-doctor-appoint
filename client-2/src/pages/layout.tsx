@@ -1,5 +1,10 @@
 import AppSidebar from "@/components/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { ReactNode } from "react";
 // import { Route, Routes } from "react-router-dom";
 
@@ -10,11 +15,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <AppSidebar />
 
       {/* Main content (user, doctor, admin)  */}
-      <main className="w-full">
+      <SidebarInset className="p-2 pl-0">
         <SidebarTrigger />
-        {/* <LogoutButton /> */}
+        <Separator className="mt-1 mb-2" />
         {children}
-      </main>
+      </SidebarInset>
     </SidebarProvider>
   );
 };

@@ -66,9 +66,9 @@ export const getDoctorByIdController = async (req, res) => {
 // Get Doctor Appointments Controller
 export const doctorAppointmentsController = async (req, res) => {
   try {
-    const doctor = await doctorModel.findOne({ userId: req.body.userId });
+    const doctor = await doctorModel.findOne({ userId: req.params.id });
     const appointments = await appointmentModel.find({
-      doctorId: doctor._id,
+      doctorId: doctor.userId,
     });
     res.status(200).send({
       success: true,

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import PublicRoute from "@/routes/PublicRoute";
 import {
   ApplyDoctor,
+  Appointments,
   Approvals,
   BookDoctor,
   Dashboard,
@@ -117,7 +118,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Layout>
-                      <Dashboard />
+                      <Appointments />
                     </Layout>
                   </ProtectedRoute>
                 }

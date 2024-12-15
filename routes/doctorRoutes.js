@@ -20,8 +20,8 @@ doctorRouter.post("/updateProfile", authMiddleware, updateProfileController);
 doctorRouter.post("/getDoctorById", authMiddleware, getDoctorByIdController);
 
 // Doc Appointments || GET
-doctorRouter.post(
-  "/doctor-appointments",
+doctorRouter.get(
+  "/doctor-appointments/:id",
   // authMiddleware,
   doctorAppointmentsController
 );

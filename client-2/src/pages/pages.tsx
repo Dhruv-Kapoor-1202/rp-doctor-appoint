@@ -9,6 +9,7 @@ import Approvals from "./admin/approvalsPage";
 import PatientInfo from "./admin/patientInfoPage";
 import ApplyDoctor from "./user/applyDoctorPage";
 import BookDoctor from "./user/bookDoctorPage";
+import Appointments from "./doctor/appointmentsPage";
 
 export {
   LandingPage,
@@ -22,4 +23,5 @@ export {
   PatientInfo,
   ApplyDoctor,
   BookDoctor,
+  Appointments,
 };
