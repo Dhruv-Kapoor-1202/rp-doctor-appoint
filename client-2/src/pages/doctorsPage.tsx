@@ -44,7 +44,11 @@ const Doctors = () => {
         console.log(res.data);
         if (res.data.success) {
           console.log("Doctors Fetched Successfully");
-          setDoctors(res.data.data);
+          setDoctors(
+            res.data.data.filter(
+              (doctor: Doctor) => doctor.status === "approved"
+            )
+          );
           toast.success(res.data.message);
         } else {
           console.log("Error: " + res.data.message);
@@ -69,7 +73,7 @@ const Doctors = () => {
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Specialization</TableHead>
-            <TableHead className="text-right">Status</TableHead>
+            {/* <TableHead className="text-right">Status</TableHead> */}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -82,7 +86,7 @@ const Doctors = () => {
               </TableCell>
               <TableCell>{doctor.email}</TableCell>
               <TableCell>{doctor.specialization}</TableCell>
-              <TableCell className="text-right">{doctor.status}</TableCell>
+              {/* <TableCell className="text-right">{doctor.status}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>

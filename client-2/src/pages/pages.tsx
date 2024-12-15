@@ -6,6 +6,7 @@ import Dashboard from "./dashboardPage";
 import ApplyDoctor from "./applyDoctorPage";
 import Patients from "./patientsPage";
 import Doctors from "./doctorsPage";
+import Approvals from "./approvalsPage";
 
 export {
   LandingPage,
@@ -16,4 +17,5 @@ export {
   ApplyDoctor,
   Patients,
   Doctors,
+  Approvals,
 };

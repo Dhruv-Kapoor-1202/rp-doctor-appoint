@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import PublicRoute from "@/routes/PublicRoute";
 import {
   ApplyDoctor,
+  Approvals,
   Dashboard,
   Doctors,
   LandingPage,
@@ -158,7 +159,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Layout>
-                      <Dashboard />
+                      <Approvals />
                     </Layout>
                   </ProtectedRoute>
                 }

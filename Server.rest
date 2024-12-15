@@ -72,3 +72,14 @@ Content-Type: application/json
 ### GET ALL PATIENTS
 
 GET http://localhost:8080/api/v1/admin/getAllUsers HTTP/1.1
+
+
+### Approve Doctor
+POST http://localhost:8080/api/v1/admin/approveDoctor HTTP/1.1
+Content-Type: application/json
+
+{
+  "userId" : "674942858d7a6688484156c5"
+}
+
+###
