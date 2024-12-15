@@ -51,26 +51,6 @@ let items = [
 const AppSidebar = () => {
   const { user } = useSelector((state: RootState) => state.user);
 
-  if (user?.isDoctor) {
-    items = [
-      {
-        title: "Dashbaord",
-        url: "/dashboard",
-        icon: Home,
-      },
-      {
-        title: "Patients",
-        url: "/patients",
-        icon: User,
-      },
-      {
-        title: "Appointments",
-        url: "/appointments",
-        icon: Inbox,
-      },
-    ];
-  }
-
   if (user?.isAdmin) {
     items = [
       {
@@ -91,6 +71,26 @@ const AppSidebar = () => {
       {
         title: "Approvals",
         url: "/approvals",
+        icon: Inbox,
+      },
+    ];
+  }
+
+  if (user?.isDoctor) {
+    items = [
+      {
+        title: "Dashbaord",
+        url: "/dashboard",
+        icon: Home,
+      },
+      {
+        title: "Patients",
+        url: "/patients",
+        icon: User,
+      },
+      {
+        title: "Appointments",
+        url: "/appointments",
         icon: Inbox,
       },
     ];

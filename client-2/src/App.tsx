@@ -4,9 +4,11 @@ import PublicRoute from "@/routes/PublicRoute";
 import {
   ApplyDoctor,
   Dashboard,
+  Doctors,
   LandingPage,
   Layout,
   LoginPage,
+  Patients,
   SignupPage,
 } from "@/pages/pages";
 import ProtectedRoute, { RootState } from "@/routes/ProtectedRoute";
@@ -102,7 +104,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Layout>
-                      <Dashboard />
+                      <Patients />
                     </Layout>
                   </ProtectedRoute>
                 }
@@ -136,7 +138,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Layout>
-                      <Dashboard />
+                      <Patients />
                     </Layout>
                   </ProtectedRoute>
                 }
@@ -146,7 +148,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Layout>
-                      <Dashboard />
+                      <Doctors />
                     </Layout>
                   </ProtectedRoute>
                 }

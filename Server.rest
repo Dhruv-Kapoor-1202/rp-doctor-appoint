@@ -68,3 +68,7 @@ Content-Type: application/json
 {
   "userId": "674942858d7a6688484156c5"
 }
+
+### GET ALL PATIENTS
+
+GET http://localhost:8080/api/v1/admin/getAllUsers HTTP/1.1
