@@ -6,7 +6,7 @@ export const getUserController = async (req, res) => {
   try {
     const id = req.params.id;
     const user = await patientModel.findById(id);
-    user.password = undefined;
+    // user.password = "";
     res.status(200).send({
       success: true,
       message: "User Fetched Successfully",

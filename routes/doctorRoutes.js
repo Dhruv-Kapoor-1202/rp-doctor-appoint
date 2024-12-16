@@ -1,9 +1,11 @@
 import express from "express";
 import {
+  acceptAppointmentController,
   doctorAppointmentsController,
   getAllDoctorsController,
   getDoctorByIdController,
   getDoctorInfoController,
+  rejectAppointmentController,
   updateProfileController,
 } from "../controllers/doctorCtrl.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
@@ -27,7 +29,18 @@ doctorRouter.get(
 );
 
 // Accept Appointment || POST
-doctorRouter.post("/acceptAppointment/:id", acceptAppointmentController);
+doctorRouter.post(
+  "/acceptAppointment/:id",
+  authMiddleware,
+  acceptAppointmentController
+);
+
+// Reject Appointment || DELETE
+doctorRouter.delete(
+  "/rejectAppointment/:id",
+  authMiddleware,
+  rejectAppointmentController
+);
 
 // All Doctors || GET
 doctorRouter.get("/getAllDoctors", authMiddleware, getAllDoctorsController);

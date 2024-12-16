@@ -91,7 +91,39 @@ export const acceptAppointmentController = async (req, res) => {
     const appointment = await appointmentModel.findOne({ _id: req.params.id });
     appointment.status = "approved";
     await appointment.save();
-  } catch (error) {}
+    res.status(200).send({
+      success: true,
+      message: "Appointment Accepted Successfully",
+      data: appointment,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While Accepting. Please try again",
+      error,
+    });
+  }
+};
+
+// Reject Appointment Controller
+export const rejectAppointmentController = async (req, res) => {
+  try {
+    await appointmentModel.findOneAndDelete({
+      _id: req.params.id,
+    });
+    res.status(200).send({
+      success: true,
+      message: "Appointment Rejected Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While Rejecting. Please try again",
+      error,
+    });
+  }
 };
 
 // Get All Doctors Controller

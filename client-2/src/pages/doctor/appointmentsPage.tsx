@@ -13,7 +13,7 @@ import { URL } from "@/URL";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { RootState } from "@/routes/ProtectedRoute";
+import { RootState, User } from "@/routes/ProtectedRoute";
 import { Button } from "@/components/ui/button";
 
 export type Appointment = {
@@ -32,21 +32,58 @@ const Appointments = () => {
 
   const { user } = useSelector((state: RootState) => state.user);
 
-  const getPatient = async ({ id }: { id: string | undefined }) => {
+  const handleAccept = async (appointmentId: string) => {
     try {
-      const res = await axios.get(`${URL}/api/v1/admin/getUser/${id}`);
-
+      const res = await axios.post(
+        `${URL}/api/v1/doctor/acceptAppointment/${appointmentId}`,
+        { status: "approved" },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (res.data.success) {
-        // setPatient(res.data.data);
-        // Assuming response has 'data' property
-        // toast.success(res.data.message);
+        toast.success("Appointment approved!");
+        // You may want to refresh the list or update the state accordingly
+        setAppointments((prevAppointments) =>
+          prevAppointments?.map((appointment) =>
+            appointment._id === appointmentId
+              ? { ...appointment, status: "approved" }
+              : appointment
+          )
+        );
       } else {
         toast.error(res.data.message);
-        console.error(res.data.message);
       }
     } catch (error) {
-      console.error(error);
-      toast.error(`${error}`);
+      toast.error(`${error}` || "Failed to update appointment");
+    }
+  };
+
+  const handleReject = async (appointmentId: string) => {
+    try {
+      const res = await axios.delete(
+        `${URL}/api/v1/doctor/rejectAppointment/${appointmentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        toast.success("Appointment rejected!");
+        // Remove the rejected appointment from the list
+        setAppointments((prevAppointments) =>
+          prevAppointments?.filter(
+            (appointment) => appointment._id !== appointmentId
+          )
+        );
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      toast.error(`${error}` || "Failed to update appointment");
     }
   };
 
@@ -84,44 +121,92 @@ const Appointments = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[60px]"></TableHead>
-            {/* <TableHead>ID</TableHead> */}
             <TableHead>User</TableHead>
-            {/* <TableHead>Doctor</TableHead> */}
+            <TableHead>Email</TableHead>
+            <TableHead>Timings</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="text-center">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {appointments?.map((appointment, index) => (
-            <TableRow
-              key={index}
-              onLoad={() => getPatient({ id: appointment?.userId })}
-            >
+            <TableRow key={index}>
               <TableCell className="font-medium">{index + 1}</TableCell>
-              {/* <TableCell>{appointment._id}</TableCell> */}
-              <TableCell>{appointment.userId}</TableCell>
-              {/* <TableCell>{appointment.doctorId}</TableCell> */}
-              <TableCell>{appointment.status}</TableCell>
+              <TableCell>
+                <UserCall id={`${appointment.userId}`} stuff="name" />{" "}
+              </TableCell>
+              <TableCell>
+                <UserCall id={`${appointment.userId}`} stuff="email" />{" "}
+              </TableCell>
+              <TableCell>{appointment.time}</TableCell>
+              <TableCell className="capitalize">{appointment.status}</TableCell>
               <TableCell className="flex justify-center gap-2">
-                <Button size={"sm"} variant={"default"}>
+                <Button
+                  size={"sm"}
+                  variant={"default"}
+                  onClick={() => handleAccept(appointment._id || "")}
+                  disabled={appointment.status === "approved"}
+                >
                   Accept
                 </Button>
-                <Button size={"sm"} variant={"destructive"}>
+                <Button
+                  size={"sm"}
+                  variant={"destructive"}
+                  onClick={() => handleReject(appointment._id || "")}
+                >
                   Reject
                 </Button>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
-        {/* <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
-          </TableRow>
-        </TableFooter> */}
       </Table>
     </>
   );
 };
 
 export default Appointments;
+
+export const UserCall = ({
+  id,
+  stuff,
+}: {
+  id: string;
+  stuff: "name" | "email";
+}) => {
+  const [user, setUser] = useState<User>();
+
+  const getUser = async ({ id }: { id: string | undefined }) => {
+    try {
+      const res = await axios.get(`${URL}/api/v1/admin/getUser/${id}`);
+
+      if (res.data.success) {
+        setUser(res.data.data);
+        // console.log(res.data.data);
+        // Assuming response has 'data' property
+        // toast.success(res.data.message);
+      } else {
+        toast.error(res.data.message);
+        console.error(res.data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(`${error}`);
+    }
+  };
+
+  useEffect(() => {
+    if (id) getUser({ id });
+  }, [id]);
+
+  return (
+    <>
+      {stuff === "name" && (
+        <>
+          {user?.fname} {user?.lname}
+        </>
+      )}
+      {stuff === "email" && <>{user?.email}</>}
+    </>
+  );
+};
